@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import CategorytContext from '../context/CategoryContext';
 import DataContext from '../context/DataContext'
@@ -10,17 +11,20 @@ import OnlySwiggy from './OnlySwiggy';
 import SeeAll from './SeeAll';
 
 export default function RightArea() {
-  const { fdata } = useContext(DataContext);
+  const { fdata, setFdata } = useContext(DataContext);
   const { isSeeAll, setIsSeeAll } = useContext(SeeAllContext)
   const { popu, setPopu, offer, setOffer, express, setExpress, gourmet, setGourmet } = useContext(CategorytContext)
  const {imageArr} = useContext(ImageContext);
 
   let getRestauArr = (categ) => {
-    let x = fdata.reduce((a, c) => {
-      if (c.category == categ) a = c.restaurantList;
-      return a;
-    }, [])
-    return x;
+    if(fdata){
+      let x = fdata.reduce((a, c) => {
+        if (c.category == categ) a = c.restaurantList;
+        return a;
+      }, [])
+      return x;
+    }
+    return [];
   }
 
   useEffect(() => {
@@ -35,6 +39,27 @@ export default function RightArea() {
 
     let gourmetAll = getRestauArr('Gourmet');
     setGourmet({ display: 5, hidden: gourmetAll.length - 5, RestArr: gourmetAll })
+  }, [fdata])
+  
+
+  useEffect(() => {
+
+    (async () => {
+      try {
+        let respData = await axios("http://cdn.adpushup.com/reactTask.json")
+        console.log(respData.data);
+        let newObj = respData.data;
+        newObj.map((ele)=>{
+          ele.restaurantList.map(el=>el.image=imageArr[Math.floor(Math.random() * 11)])
+        })
+        console.log(newObj);
+        setFdata(respData.data);
+      } catch (error) {
+        console.log(error)
+      }
+     
+
+    })()
   }, [])
 
 
@@ -43,7 +68,7 @@ export default function RightArea() {
       <div className={styles.cardContainer}>
           
         {
-          isSeeAll ? <SeeAll /> : <>
+          fdata? ( isSeeAll ? <SeeAll /> : <>
             <div id="RightPopular" className={styles.cardTitle}><h2>Popular Brands</h2></div>
             <div className={styles.categoryCont}>
 
@@ -91,7 +116,7 @@ export default function RightArea() {
             <div id="RightOnlySwiggy" className={styles.cardTitle}><h2>Only on Swiggy</h2></div>
             <div className={styles.categoryCont}>
               <OnlySwiggy />
-            </div></>
+            </div></> ) : <></>
 
         }
 
