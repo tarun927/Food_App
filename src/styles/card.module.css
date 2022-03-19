@@ -1,0 +1,68 @@
+.CardParent{
+    box-sizing: border-box;
+   width:30%;
+   height: 48vh;
+   margin: 10px 15px;
+   padding: 15px 15px 0 15px;
+   
+   /* background-color: orchid; */
+}
+.CardParent:hover{
+   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.MoreCard{
+    border: 3px solid #e56c47;
+    background-color: white;
+    color: #e56c47;
+    font-size: larger;
+    font-weight: bolder;
+    display: grid;
+    place-content: center;
+}
+.innerCard{
+   
+    height: 100%;
+   
+}
+
+.lowerDiv{
+    height: 32%;
+    display: grid;
+    grid-template-rows: 2fr 2fr 1fr 1.5fr;
+}
+
+.RName{
+    font-size: larger;
+    font-weight: 500;
+}
+.ImageDiv{
+    height: 67%;
+    width: 100%;
+    background-color: greenyellow;
+  }
+.ImageTag{
+   /* display: block; */
+   width: 100%;
+   height: 100%;
+}
+.threein1{
+    display: flex;
+    justify-content: space-between;
+}
+.InvisibleQV{
+  visibility: hidden;
+  color:rgb(13, 126, 196);
+  font-weight: 500;
+  /* margin-top: 4px; */
+  border-top: 1px solid lightgray;
+  text-align: center;
+  /* padding-top: 15px; */
+}
+.quickV{
+    visibility: visible;
+    
+}
+.ratingBG{
+    background-color: rgb(152, 246, 11);
+    color:white;
+}

@@ -1,0 +1,22 @@
+.RightParent{
+    /* background-color: bisque; */
+}
+.cardContainer{
+    /* background-color: orange; */
+    margin: 0 5% 15% 5%;
+    
+}
+.categoryCont{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid lightgray;
+}
+h2{
+    margin: 0;
+}
+.cardTitle{
+    padding: 10px 20px;
+    color: rgb(92, 91, 91);
+}
