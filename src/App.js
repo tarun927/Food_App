@@ -16,7 +16,11 @@ function App() {
 
     (async () => {
       try {
-        let respData = await axios("http://cdn.adpushup.com/reactTask.json")
+        let respData = await axios({
+          method: 'get',
+          url: `http://cdn.adpushup.com/reactTask.json`,
+          withCredentials: false,
+        });
         console.log(respData.data);
         respData.data.map((ele)=>{
           ele.restaurantList.map(el=>el.image=imageArr[Math.floor(Math.random() * 11)])
