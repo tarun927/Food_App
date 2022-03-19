@@ -28,11 +28,13 @@
 .lowerDiv{
     height: 32%;
     display: grid;
+    color: grey;
     grid-template-rows: 2fr 2fr 1fr 1.5fr;
 }
 
 .RName{
     font-size: larger;
+    color: black;
     font-weight: 500;
 }
 .ImageDiv{
@@ -48,6 +50,7 @@
 .threein1{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2px;
 }
 .InvisibleQV{
   visibility: hidden;
@@ -65,4 +68,5 @@
 .ratingBG{
     background-color: rgb(152, 246, 11);
     color:white;
+    padding:0 2px;
 }

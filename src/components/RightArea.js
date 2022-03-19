@@ -49,7 +49,7 @@ export default function RightArea() {
 
               {
                 popu.RestArr ? popu.RestArr.filter((ele, idx) => idx < popu.display).map((el) => {
-                  return <Card singleData={el} image={imageArr[Math.floor(Math.random() * 11)]}/>
+                  return <Card singleData={el}/>
                 }) : <></>
               }
               <MoreCard categData={popu} setCategData={setPopu} />

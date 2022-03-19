@@ -7,17 +7,29 @@ import SideBar from './components/SideBar';
 import RightArea from './components/RightArea';
 import DataContext from './context/DataContext';
 import sideActiveContext from './context/sideActiveContext';
+import ImageContext from './context/ImageContext';
 
 function App() {
   const { setFdata, fdata } = useContext(DataContext);
-  const { setActive } = useContext(sideActiveContext)
+  const { setActive } = useContext(sideActiveContext);
+  const {imageArr} = useContext(ImageContext);
 
   useEffect(() => {
 
     (async () => {
-      let respData = await axios("http://cdn.adpushup.com/reactTask.json")
-      console.log(respData.data);
-      setFdata(respData.data);
+      try {
+        let respData = await axios("http://cdn.adpushup.com/reactTask.json")
+        console.log(respData.data);
+        let newObj = respData.data;
+        newObj.map((ele)=>{
+          ele.restaurantList.map(el=>el.image=imageArr[Math.floor(Math.random() * 11)])
+        })
+        console.log(newObj);
+        setFdata(respData.data);
+      } catch (error) {
+        console.log(error)
+      }
+     
 
     })()
   }, [])
@@ -33,15 +45,15 @@ function App() {
     let elemGour = document.getElementById("RightGourmet");
     let elemOnlyS = document.getElementById("RightOnlySwiggy");
 
-    if (elemExpress.getBoundingClientRect().top > -15 && elemExpress.getBoundingClientRect().top < 15) {
+    if (elemExpress.getBoundingClientRect().top > -20 && elemExpress.getBoundingClientRect().top < 20) {
       setActive('expres');
-    } else if (elemPopu.getBoundingClientRect().top > -15 && elemPopu.getBoundingClientRect().top < 15) {
+    } else if (elemPopu.getBoundingClientRect().top > -20 && elemPopu.getBoundingClientRect().top < 20) {
       setActive('popu');
-    } else if (elemOff.getBoundingClientRect().top > -15 && elemOff.getBoundingClientRect().top < 15) {
+    } else if (elemOff.getBoundingClientRect().top > -20 && elemOff.getBoundingClientRect().top < 20) {
       setActive('off');
-    }else if(elemGour.getBoundingClientRect().top > -15 && elemGour.getBoundingClientRect().top < 15){
+    }else if(elemGour.getBoundingClientRect().top > -20 && elemGour.getBoundingClientRect().top < 20){
       setActive('gour');
-    }else if(elemOnlyS.getBoundingClientRect().top > -15 && elemOnlyS.getBoundingClientRect().top < 15){
+    }else if(elemOnlyS.getBoundingClientRect().top > -20 && elemOnlyS.getBoundingClientRect().top < 20){
       setActive('only');
     }
   }
