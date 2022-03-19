@@ -18,7 +18,7 @@ function App() {
       try {
         let respData = await axios({
           method: 'get',
-          url: `http://cdn.adpushup.com/reactTask.json/`,
+          url: `http://cdn.adpushup.com/reactTask.json`,
           withCredentials: false,
         });
         console.log(respData.data);

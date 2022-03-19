@@ -6,11 +6,9 @@ import ContextWrapper from './context/ContextWrapper';
 import { BrowserRouter as Router } from 'react-router-dom'
 ReactDOM.render(
   <Router>
-    <React.StrictMode>
       <ContextWrapper>
         <App />
       </ContextWrapper>
-    </React.StrictMode>
   </Router>,
   document.getElementById('root')
 );
