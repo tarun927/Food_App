@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import CategorytContext from '../context/CategoryContext';
 import DataContext from '../context/DataContext'
-import ImageContext from '../context/ImageContext';
-import SeeAllContext from '../context/SeeAllContext';
 import styles from '../styles/rightArea.module.css'
 import Card from './Card';
 import MoreCard from './MoreCard';
@@ -11,9 +9,8 @@ import SeeAll from './SeeAll';
 
 export default function RightArea() {
   const { fdata } = useContext(DataContext);
-  const { isSeeAll, setIsSeeAll } = useContext(SeeAllContext)
-  const { popu, setPopu, offer, setOffer, express, setExpress, gourmet, setGourmet } = useContext(CategorytContext)
- const {imageArr} = useContext(ImageContext);
+  const { popu, setPopu, offer, setOffer, express, setExpress, gourmet, setGourmet,isSeeAll } = useContext(CategorytContext)
+
 
   let getRestauArr = (categ) => {
     let x = fdata.reduce((a, c) => {

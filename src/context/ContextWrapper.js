@@ -1,9 +1,7 @@
 import DataContext from "./DataContext";
 import React, { useEffect, useState } from 'react';
 import sideActiveContext from "./sideActiveContext";
-import SeeAllContext from "./SeeAllContext";
 import CategorytContext from "./CategoryContext";
-import ImageContext from "./ImageContext";
 
 const ContextWrapper = ({ children }) => {
     const [fdata, setFdata] = useState();
@@ -30,15 +28,11 @@ const ContextWrapper = ({ children }) => {
         'https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=500&q=60'
     ]
     return (
-        <DataContext.Provider value={{ fdata, setFdata }}>
+        <DataContext.Provider value={{ fdata, setFdata, imageArr }}>
             <sideActiveContext.Provider value={{ active, setActive }}>
-                <SeeAllContext.Provider value={{ isSeeAll, setIsSeeAll }}>
-                    <CategorytContext.Provider value={{ popu, setPopu, offer, setOffer, express, setExpress, gourmet, setGourmet, onlySwi, setOnlySwi }}>
-                        <ImageContext.Provider value={{ imageArr }}>
+                    <CategorytContext.Provider value={{ popu, setPopu, offer, setOffer, express, setExpress, gourmet, setGourmet, onlySwi, setOnlySwi,isSeeAll, setIsSeeAll }}>
                             {children}
-                        </ImageContext.Provider>
                     </CategorytContext.Provider>
-                </SeeAllContext.Provider>
             </sideActiveContext.Provider>
         </DataContext.Provider>
     )

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react'
 import CategorytContext from '../context/CategoryContext';
-import SeeAllContext from '../context/SeeAllContext';
 import sideActiveContext from '../context/sideActiveContext'
 import { HashLink as Link } from 'react-router-hash-link'
 import styles from '../styles/sideBar.module.css'
@@ -8,8 +7,7 @@ import SeeAll from './SeeAll';
 
 export default function SideBar() {
   const { active, setActive } = useContext(sideActiveContext);
-  const { isSeeAll,setIsSeeAll } = useContext(SeeAllContext);
-  const { popu, offer, express, gourmet, onlySwi } = useContext(CategorytContext)
+  const { popu, offer, express, gourmet, onlySwi,isSeeAll,setIsSeeAll } = useContext(CategorytContext)
 
   let totalRestaurants =
     (popu.RestArr ? popu.RestArr.length : 0) +
