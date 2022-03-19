@@ -30,9 +30,9 @@ const ContextWrapper = ({ children }) => {
     return (
         <DataContext.Provider value={{ fdata, setFdata, imageArr }}>
             <sideActiveContext.Provider value={{ active, setActive }}>
-                    <CategorytContext.Provider value={{ popu, setPopu, offer, setOffer, express, setExpress, gourmet, setGourmet, onlySwi, setOnlySwi,isSeeAll, setIsSeeAll }}>
-                            {children}
-                    </CategorytContext.Provider>
+                <CategorytContext.Provider value={{ popu, setPopu, offer, setOffer, express, setExpress, gourmet, setGourmet, onlySwi, setOnlySwi, isSeeAll, setIsSeeAll }}>
+                    {children}
+                </CategorytContext.Provider>
             </sideActiveContext.Provider>
         </DataContext.Provider>
     )

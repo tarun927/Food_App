@@ -9,7 +9,7 @@ import SeeAll from './SeeAll';
 
 export default function RightArea() {
   const { fdata } = useContext(DataContext);
-  const { popu, setPopu, offer, setOffer, express, setExpress, gourmet, setGourmet,isSeeAll } = useContext(CategorytContext)
+  const { popu, setPopu, offer, setOffer, express, setExpress, gourmet, setGourmet, isSeeAll } = useContext(CategorytContext)
 
 
   let getRestauArr = (categ) => {
@@ -38,7 +38,7 @@ export default function RightArea() {
   return (
     <div className={styles.RightParent}>
       <div className={styles.cardContainer}>
-          
+
         {
           isSeeAll ? <SeeAll /> : <>
             <div id="RightPopular" className={styles.cardTitle}><h2>Popular Brands</h2></div>
@@ -46,7 +46,7 @@ export default function RightArea() {
 
               {
                 popu.RestArr ? popu.RestArr.filter((ele, idx) => idx < popu.display).map((el) => {
-                  return <Card singleData={el}/>
+                  return <Card singleData={el} />
                 }) : <></>
               }
               <MoreCard categData={popu} setCategData={setPopu} />

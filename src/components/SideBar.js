@@ -3,11 +3,10 @@ import CategorytContext from '../context/CategoryContext';
 import sideActiveContext from '../context/sideActiveContext'
 import { HashLink as Link } from 'react-router-hash-link'
 import styles from '../styles/sideBar.module.css'
-import SeeAll from './SeeAll';
 
 export default function SideBar() {
   const { active, setActive } = useContext(sideActiveContext);
-  const { popu, offer, express, gourmet, onlySwi,isSeeAll,setIsSeeAll } = useContext(CategorytContext)
+  const { popu, offer, express, gourmet, onlySwi, isSeeAll, setIsSeeAll } = useContext(CategorytContext)
 
   let totalRestaurants =
     (popu.RestArr ? popu.RestArr.length : 0) +
@@ -20,17 +19,14 @@ export default function SideBar() {
   }
   const handleSeeAll = () => {
     setIsSeeAll(true);
+    setActive('seeAll')
   }
-
-  useEffect(()=>{
-     setActive('seeAll')
-  },[isSeeAll])
   return (
     <div className={styles.sideParent}>
       <div className={styles.categContainer}>
 
         <Link smooth to="#RightPopular">
-          <div onClick={() =>{ handleScroll()}} className={`${styles.sideTitle} ${active === 'popu' && 'active-tab'}`}>
+          <div onClick={() => { handleScroll() }} className={`${styles.sideTitle} ${active === 'popu' && 'active-tab'}`}>
             <div ><h3>Popular brands</h3></div>
             <div>{popu.RestArr ? popu.RestArr.length + ' Options' : 'loading'}</div>
           </div>

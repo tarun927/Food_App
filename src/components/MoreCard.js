@@ -11,7 +11,7 @@ export default function MoreCard({ categData, setCategData }) {
     return (
         <>
             {
-                categData.hidden > 0 ? <button onClick={incCard} className={`${styles.CardParent} ${styles.MoreCard}`}>{'+'+categData.hidden+' More'}</button> : <></>
+                categData.hidden > 0 ? <button onClick={incCard} className={`${styles.CardParent} ${styles.MoreCard}`}>{'+' + categData.hidden + ' More'}</button> : <></>
             }
         </>
     )

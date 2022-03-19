@@ -18,8 +18,8 @@ function App() {
       try {
         let respData = await axios('http://cdn.adpushup.com/reactTask.json')
         console.log(respData.data);
-        respData.data.map((ele)=>{
-          ele.restaurantList.map(el=>el.image=imageArr[Math.floor(Math.random() * 11)])
+        respData.data.map((ele) => {
+          ele.restaurantList.map(el => el.image = imageArr[Math.floor(Math.random() * 11)])
         })
         console.log(respData.data);
         setFdata(respData.data);
